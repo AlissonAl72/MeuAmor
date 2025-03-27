@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosso Álbum de Fotos</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-color: #6D4C41;
+            color: #ffffff;
+            position: relative;
+        }
+        h1 {
+            font-size: 3em;
+            text-shadow: 2px 2px 5px #FFD700;
+            color: #FFD700;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Layout em grid */
+            gap: 15px; /* Espaçamento entre as imagens */
+            justify-items: center; /* Centraliza as imagens dentro das células */
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 100%; /* Faz as imagens ocuparem toda a largura da célula */
+            height: 250px;
+            object-fit: cover; /* Ajusta a imagem para preencher o espaço */
+            border-radius: 15px;
+            box-shadow: 3px 3px 10px rgba(255, 215, 0, 0.5);
+            border: 3px solid #FFD700;
+            padding: 5px;
+            background: #FFF8DC;
+        }
+        button {
+            background-color: #FFD700;
+            color: #6D4C41;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 1em;
+            cursor: pointer;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #E6BE8A;
+        }
+        textarea {
+            width: 80%;
+            height: 166px;
+            border: 2px solid #FFD700;
+            border-radius: 1.3px;
+            padding: 10px;
+            font-size: 1.3em;
+            resize: none;
+            margin-top: 10px;
+            background-color: #FFF8DC;
+            color: #6D4C41;
+        }
+        .spotify-box {
+            margin-top: 20px;
+            padding: 10px;
+            background: #FFF8DC;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 3px 3px 10px rgba(255, 215, 0, 0.5);
+        }
+        .daisies {
+            position: absolute;
+            width: 150px;
+            height: auto;
+        }
+        .top-left { top: 10px; left: 10px; }
+        .top-right { top: 10px; right: 10px; }
+        .bottom-left { bottom: 10px; left: 10px; }
+        .bottom-right { bottom: 10px; right: 10px; }
+        .spotify-box p {color: #000000;}
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5em;
+            }
+            .gallery img {
+                width: 200px;
+                height: 200px;
+            }
+            button {
+                font-size: 0.9em;
+                padding: 8px 16px;
+            }
+            textarea {
+                width: 90%;
+            }
+            .spotify-box {
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.2em;
+            }
+            .gallery img {
+                width: 180px;
+                height: 180px;
+            }
+            button {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+            textarea {
+                width: 95%;
+                font-size: 0.9em;
+            }
+            .daisies {
+                width: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="Imagens/Margarida.png" class="daisies top-left" alt="Margarida">
+    <img src="Imagens/Margarida.png" class="daisies top-right" alt="Margarida">
+    <img src="Imagens/Margarida.png" class="daisies bottom-left" alt="Margarida">
+    <img src="Imagens/Margarida.png" class="daisies bottom-right" alt="Margarida">
+    
+    <h1>Nosso Álbum de Fotos 💛</h1>
+    <textarea id="message" placeholder="Oie meu amor, tudo bem? Eeeee lebra do que eu falei que iria ficar pronto um negocinho? Então eu fiz esse sitezinho para poder colocar nossas fotos, atualmente não consegui deixar um modo para você também poder colocar fotinhas porem eu vou colocar mais tarde. Amor eu quero muito te dar o MUNDO TODO para você, eu quero poder dar a melhor vida para você, quero poder viver com você do meu lado, sim já disse isso varias vezes, porem eu não consigo viver sem você, tudo que acontece em minha vida a todo momento eu fico pensando em você ainda não sei como te demostrar todo o amor que eu tenho por você e eu espero um dia coseguir demonstrar ele para você. Luca Nascimento Guimarães o meu grande amor, o amor da minha vida, ja estamos no namoro 2342, porem você aceita a namorar comigo novamente? Você quer viver um namoro a distancia comigo, mesmo sabendo que eu sou lerdo, chato, emburrado, não sabe viver muito bem no mundo? Você me ajuda a viver e me ensine a viver nesse mundo? Eu quero poder passar por todas as coisas do seu lado, Eu te amo meu amor💌"></textarea>
+    <br>
+    <input type="file" id="fileInput" accept="image/*">
+    <button onclick="uploadImage()">📸 Enviar Foto</button>
+    <div class="gallery" id="gallery"></div>
+
+    <!-- Exemplos de imagens já carregadas na galeria -->
+    <div class="gallery">
+        <img src="Imagens/MeuAmor/1.JPG">
+        <img src="Imagens/MeuAmor/2.JPG">
+        <img src="Imagens/MeuAmor/3.JPG">
+        <img src="Imagens/MeuAmor/4.JPG">
+        <img src="Imagens/MeuAmor/5.JPG">
+        <img src="Imagens/MeuAmor/6.JPG">
+        <img src="Imagens/MeuAmor/7.JPG">
+        <img src="Imagens/MeuAmor/8.JPG">
+        <img src="Imagens/MeuAmor/9.JPG">
+        <img src="Imagens/MeuAmor/10.JPG">
+        <img src="Imagens/MeuAmor/11.JPG">
+        <img src="Imagens/MeuAmor/12.JPEG">
+        <img src="Imagens/MeuAmor/13.JPG">
+        <img src="Imagens/MeuAmor/14.JPEG">
+        <img src="Imagens/MeuAmor/15.JPEG">
+        <img src="Imagens/MeuAmor/16.JPG">
+        <img src="Imagens/MeuAmor/17.PNG">
+        <img src="Imagens/MeuAmor/18.JPEG">
+        <img src="Imagens/MeuAmor/19.JPEG">
+        <img src="Imagens/MeuAmor/20.JPG">
+        <img src="Imagens/MeuAmor/21.JPEG">
+        <img src="Imagens/MeuAmor/22.PNG">
+        <img src="Imagens/MeuAmor/23.PNG">
+        <img src="Imagens/MeuAmor/24.JPEG">
+        <img src="Imagens/MeuAmor/25.JPG">
+        <img src="Imagens/MeuAmor/26.JPEG">
+    </div>
+    
+    <div class="spotify-box">
+        <p>🎵 Nossa Música:</p>
+        <iframe id="spotifyEmbed" style="border-radius:12px" width="300" height="80" frameBorder="0" allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy" src="https://open.spotify.com/embed/track/5FbcIkgUDNt6mZdDVFwVyE?si=3af9bf2128d941d1"></iframe>
+    </div>
+
+    <script>
+        // Função para carregar as imagens salvas do localStorage
+        window.onload = function() {
+            const gallery = document.getElementById('gallery');
+            const savedImages = JSON.parse(localStorage.getItem('images')) || [];
+
+            savedImages.forEach(function(imgSrc) {
+                const img = document.createElement('img');
+                img.src = imgSrc;
+                gallery.appendChild(img);
+            });
+        };
+
+        // Função para salvar as imagens no localStorage
+        function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            const gallery = document.getElementById('gallery');
+            
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = function(e) {
+                    const imgSrc = e.target.result;
+                    const img = document.createElement('img');
+                    img.src = imgSrc;
+                    gallery.appendChild(img);
+
+                    // Salvar a imagem no localStorage
+                    let savedImages = JSON.parse(localStorage.getItem('images')) || [];
+                    savedImages.push(imgSrc);
+                    localStorage.setItem('images', JSON.stringify(savedImages));
+                };
+                
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>
